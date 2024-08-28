@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: metabase
+    env: docker
+    repo: https://github.com/render-examples/metabase.git # optional
+    plan: free
+    autoDeploy: true
+    envVars:
+      - key: MB_DB_CONNECTION_URI
+        fromDatabase:
+          name: elephant
+          property: postgresql://pdbuser:jLTHGrSZI5NvAb4guDJ4RZ06B7aQP4t4@dpg-cr7qlj3v2p9s73f7ai60-a.oregon-postgres.render.com/pdbname
+databases:
+  - name: elephant
+    databaseName: pdbname
+    ipAllowList: [] # only allow internal connections
